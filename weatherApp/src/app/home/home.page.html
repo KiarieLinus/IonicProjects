@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Weather App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main">
+    <span class="city">Nairobi</span>
+    <span class="data">Thur, 2:56pm</span>
+
+    <div class="icon">
+      <img src="../../assets/icon/favicon.png" alt="">
+    </div>
+
+    <span class="description">Cloudy</span>
+    <span class="temperature">18°</span>
+
+  </div>
+
+  <!-- 7 Day forecast grid -->
+  <ion-grid>
+
+    <!-- Day row -->
+    <ion-row>
+      <ion-col class="day">Fri</ion-col>
+      <ion-col class="day">Sat</ion-col>
+      <ion-col class="day">Sun</ion-col>
+      <ion-col class="day">Mon</ion-col>
+      <ion-col class="day">Tue</ion-col>
+      <ion-col class="day">Wed</ion-col>
+      <ion-col class="day">Thurs</ion-col>
+    </ion-row>
+
+    <!-- Chances of precipitation -->
+    <ion-row>
+      <ion-col class="precipitation">60%</ion-col>
+      <ion-col class="precipitation">-</ion-col>
+      <ion-col class="precipitation">20%</ion-col>
+      <ion-col class="precipitation">60%</ion-col>
+      <ion-col class="precipitation">-</ion-col>
+      <ion-col class="precipitation">-</ion-col>
+      <ion-col class="precipitation">-</ion-col>
+    </ion-row>
+
+    <!-- weather icon -->
+    <ion-row>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+      <ion-col class="icon-sm"><img src="../../assets/icon/favicon.png"></ion-col>
+    </ion-row>
+
+    <!-- Max Temp -->
+    <ion-row>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+      <ion-col class="hi-sm">28°C</ion-col>
+    </ion-row>
+
+    <!-- Min Temp -->
+    <ion-row>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+      <ion-col class="lo-sm">18°C</ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
