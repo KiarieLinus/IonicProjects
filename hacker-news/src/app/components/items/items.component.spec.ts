@@ -22,17 +22,16 @@ describe('ItemsComponent', () => {
   }));
 
   it('should display a list of items', () => {
-    component.items = {
-      offset: 0,
-      limit: 0,
-      results: [{
+    component.items = [
+      {
         id: 1,
         title: 'Test item 1',
         url: 'http://www.example.com/test1',
         by: 'user1',
         time: 1478576387,
         score: 242,
-      }, {
+      },
+      {
         id: 2,
         title: 'Test item 2',
         url: 'http://www.example.com/test2',
@@ -40,7 +39,7 @@ describe('ItemsComponent', () => {
         time: 1478576387,
         score: 100,
       }]
-    };
+
     fixture.detectChanges();
     const debugElements = fixture.debugElement.queryAll(By.
       css('h2'));
@@ -53,7 +52,7 @@ describe('ItemsComponent', () => {
   });
 
   it('should display no items', () => {
-    component.items = { offset: 0, limit: 0, results: [] }
+    component.items = []
     fixture.detectChanges();
     const debugElement = fixture.debugElement.query(By.css('p'));
     expect(debugElement).not.toBeNull();
