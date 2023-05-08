@@ -16,7 +16,9 @@ export class TopStoriesPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.itemService.load(0, 10)
-      .subscribe(items => this.items = items);
+      .subscribe(items => {
+        this.items = items;
+      });
   }
 
   ngOnDestroy() {

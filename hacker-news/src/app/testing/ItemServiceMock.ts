@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import range from "lodash.range";
+import range from "lodash/range";
 import { Items } from "../models/items";
 import { Item } from "../models/item";
 import { ItemService } from "../services/item/item.service";

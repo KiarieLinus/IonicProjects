@@ -1,4 +1,4 @@
-<ion-list *ngIf="items && items.results.length">
+<ion-list *ngIf="items && items.results.length > 0">
   <ion-item *ngFor="let item of items.results">
     <app-item [item]="item"></app-item>
   </ion-item>

@@ -13,9 +13,6 @@ import { ItemsComponent } from './items/items.component';
     CommonModule,
     IonicModule
   ],
+  exports: [ItemsComponent]
 })
 export class ComponentsModule { }
-
-/**
- * remove the schema
- */
