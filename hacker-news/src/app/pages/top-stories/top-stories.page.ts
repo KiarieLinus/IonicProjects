@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { IonRefresher } from '@ionic/angular';
+import { IonRefresherCustomEvent } from '@ionic/core';
 import { Subscription } from 'rxjs';
 import { Items } from 'src/app/models/items';
 import { ItemService } from 'src/app/services/item/item.service';
@@ -13,13 +15,22 @@ export class TopStoriesPage implements OnInit, OnDestroy {
   private subscription?: Subscription;
   private offset = 0;
   private limit = 10;
+  private infiniteScrollComponent: any;
+  private refresherComponent: any;
+  private onRefresh = true;
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     this.subscription = this.itemService.get()
       .subscribe(items => {
-        this.items = items
+        if (this.onRefresh) {
+          this.items = items;
+          this.notifyRefreshComplete();
+        } else {
+          this.items?.push(...items);
+          this.notifyScrollComplete();
+        }
       });
     this.doLoad(true);
   }
@@ -42,6 +53,13 @@ export class TopStoriesPage implements OnInit, OnDestroy {
     this.doLoad(false);
   }
 
+  load(event: Event) {
+    this.infiniteScrollComponent = event.target;
+    if (this.hasNext()) {
+      this.next();
+    }
+  }
+
   hasNext(): boolean {
     return this.items != null && (this.offset + this.limit) <
       this.itemService.total;
@@ -59,10 +77,14 @@ export class TopStoriesPage implements OnInit, OnDestroy {
     return this.items != null;
   }
 
-  refresh() {
-    if (!this.canRefresh()) {
-      return;
+  refresh(event: Event) {
+    this.refresherComponent = event.target;
+    if (this.canRefresh()) {
+      this.doRefresh();
     }
+  }
+  doRefresh() {
+    this.onRefresh = true;
     this.offset = 0;
     this.doLoad(true);
   }
@@ -74,4 +96,18 @@ export class TopStoriesPage implements OnInit, OnDestroy {
       refresh
     });
   }
+
+  private notifyScrollComplete(): void {
+    if (this.infiniteScrollComponent) {
+      this.infiniteScrollComponent.complete();
+    }
+  }
+
+  private notifyRefreshComplete(): void {
+    this.onRefresh = false;
+    if (this.refresherComponent) {
+      this.refresherComponent.complete();
+    }
+  }
+
 }
