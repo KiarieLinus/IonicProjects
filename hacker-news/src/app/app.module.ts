@@ -10,6 +10,8 @@ import { ServicesModule } from './services/services.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { environment } from 'src/environments/environment';
     ServicesModule,
     AngularFireModule.initializeApp(environment.app_db),
     AngularFireDatabaseModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {
