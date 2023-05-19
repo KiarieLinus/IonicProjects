@@ -12,6 +12,8 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/co
 import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ItemsEffects } from './effects/items';
+import { reducers } from './reducers';
 
 
 @NgModule({
@@ -23,8 +25,8 @@ import { EffectsModule } from '@ngrx/effects';
     ServicesModule,
     AngularFireModule.initializeApp(environment.app_db),
     AngularFireDatabaseModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ItemsEffects]),
   ],
   providers: [
     {

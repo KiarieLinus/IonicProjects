@@ -3,6 +3,7 @@ import * as fromTopStories from './top-stories';
 import * as fromPagination from './pagination';
 import { ActionReducerMap, createFeature, createFeatureSelector, createSelector } from '@ngrx/store';
 import { getItemEntities, getItemsError } from '../../../reducers/items';
+import { Item } from 'src/app/models/item';
 
 export interface TopStoriesState {
     stories: fromTopStories.State;
@@ -38,7 +39,7 @@ export const getDisplayItems = createSelector(
     getItemEntities,
     getPaginationState,
     (ids, entities, pagination) => {
-        return ids.slice(0, pagination.offset + pagination.limit).map(id => entities[id]);
+        return ids.slice(0, pagination.offset + pagination.limit).map(id => entities[id]) as Item[];
     }
 );
 

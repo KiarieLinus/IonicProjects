@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { Action, createFeatureSelector, createSelector } from "@ngrx/store";
 import { ItemActionTypes, ItemActions } from "../actions/items";
 import { Item } from "../models/item";
 import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
@@ -24,9 +24,10 @@ export const initialState: State = adapter.getInitialState(
 
 export function reducer(
     state = initialState,
-    action: ItemActions,
+    action: Action,
 ): State {
-    switch (action.type) {
+    const itemActions = action as ItemActions
+    switch (itemActions.type) {
         case ItemActionTypes.Load: {
             return {
                 ...state,
@@ -34,7 +35,7 @@ export function reducer(
             };
         }
         case ItemActionTypes.LoadSuccess: {
-            return adapter.upsertMany(action.payload, {
+            return adapter.upsertMany(itemActions.payload, {
                 ...state,
                 loading: false,
                 error: null,
@@ -44,7 +45,7 @@ export function reducer(
             return {
                 ...state,
                 loading: false,
-                error: action.payload,
+                error: itemActions.payload,
             }
         }
         default: {

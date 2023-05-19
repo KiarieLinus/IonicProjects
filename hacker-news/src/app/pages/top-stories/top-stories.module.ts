@@ -6,6 +6,10 @@ import { IonicModule } from '@ionic/angular';
 import { TopStoriesPageRoutingModule } from './top-stories-routing.module';
 import { TopStoriesPage } from './top-stories.page';
 
+import { reducers as topStoriesReducers } from './reducers';
+import { StoreModule } from '@ngrx/store';
+import { TopStoriesEffects } from './effects/top-stories';
+import { EffectsModule } from '@ngrx/effects';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -15,7 +19,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     TopStoriesPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    StoreModule.forFeature('topStories', topStoriesReducers),
+    EffectsModule.forFeature([TopStoriesEffects]),
   ],
   declarations: [TopStoriesPage]
 })

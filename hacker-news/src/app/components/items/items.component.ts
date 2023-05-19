@@ -8,7 +8,7 @@ import { Items } from 'src/app/models/items';
   styleUrls: ['./items.component.scss'],
 })
 export class ItemsComponent implements OnInit {
-  @Input() items?: Items;
+  @Input() items: Items | undefined | null;
   constructor() { }
 
   ngOnInit() { }
