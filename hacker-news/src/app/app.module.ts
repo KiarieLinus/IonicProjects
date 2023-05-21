@@ -15,6 +15,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { ItemsEffects } from './effects/items';
 import { reducers } from './reducers';
 
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +35,7 @@ import { reducers } from './reducers';
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
     },
+    InAppBrowser,
   ],
   bootstrap: [AppComponent],
 })
