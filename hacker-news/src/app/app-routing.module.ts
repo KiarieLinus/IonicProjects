@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'top-stories',
     loadChildren: () => import('./pages/top-stories/top-stories.module').then(m => m.TopStoriesPageModule)
   },
+  {
+    path: 'comments/:id',
+    loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsPageModule)
+  },
 ];
 
 @NgModule({
