@@ -9,6 +9,7 @@ import * as fromItems from '../../reducers/items';
 import * as fromTopStories from './reducers';
 import * as topStoriesActions from './actions/top-stories';
 import { filter, concatMap } from 'rxjs/operators';
+import { OpenPageService } from 'src/app/services/open-page/open-page.service';
 
 @Component({
   selector: 'app-top-stories',
@@ -29,7 +30,8 @@ export class TopStoriesPage implements OnInit, OnDestroy {
   constructor(
     private store: Store<fromTopStories.State>,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private openPageService: OpenPageService,
   ) {
     this.items$ = store.pipe(select(fromTopStories.getDisplayItems));
     this.itemsLoading$ = store.pipe(select(fromItems.
@@ -81,6 +83,10 @@ export class TopStoriesPage implements OnInit, OnDestroy {
     } else {
       this.store.dispatch(new topStoriesActions.LoadMore());
     }
+  }
+
+  openUrl(url: string) {
+    this.openPageService.open(url);
   }
 
   private notifyScrollComplete(): void {

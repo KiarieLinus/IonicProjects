@@ -9,7 +9,7 @@
       <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
         refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
     </ion-refresher>
-    <app-items [items]="items$ | async"></app-items>
+    <app-items [items]="items$ | async" (toOpen)="openUrl($event)"></app-items>
     <ion-infinite-scroll (ionInfinite)="load($event)">
       <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Loading...">
       </ion-infinite-scroll-content>
