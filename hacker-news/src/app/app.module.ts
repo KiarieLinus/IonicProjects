@@ -13,9 +13,10 @@ import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ItemsEffects } from './effects/items';
-import { reducers } from './reducers';
+import { CustomRouterStateSerializer, reducers } from './reducers';
 
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 @NgModule({
@@ -29,6 +30,9 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     AngularFireDatabaseModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ItemsEffects]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'
+    }),
   ],
   providers: [
     {
@@ -36,6 +40,11 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
       useClass: IonicRouteStrategy
     },
     InAppBrowser,
+    {
+      provide: RouterStateSerializer, useClass:
+        CustomRouterStateSerializer
+    },
+
   ],
   bootstrap: [AppComponent],
 })

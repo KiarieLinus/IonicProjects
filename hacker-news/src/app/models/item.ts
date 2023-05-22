@@ -5,4 +5,7 @@ export interface Item {
     by: string;
     time: number;
     score: number;
+    text?: string;
+    descendants?: number;
+    kids?: number[];
 }

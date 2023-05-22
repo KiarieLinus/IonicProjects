@@ -4,11 +4,19 @@ import { IonicModule } from '@ionic/angular';
 import { ItemComponent } from './item/item.component';
 import { TimeAgoPipe } from './time-ago/time-ago.pipe';
 import { ItemsComponent } from './items/items.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [ItemComponent, TimeAgoPipe, ItemsComponent],
+  declarations: [
+    ItemComponent,
+    TimeAgoPipe,
+    ItemsComponent,
+    CommentComponent,
+    CommentsComponent
+  ],
   imports: [
     CommonModule,
     IonicModule
