@@ -26,12 +26,12 @@ export const getCommentsFeatureState = createFeatureSelector
 
 export const getCommentsState = createSelector(
     getCommentsFeatureState,
-    state => state?.comments,
+    state => state.comments,
 );
 
 export const getPaginationState = createSelector(
     getCommentsFeatureState,
-    state => state?.pagination,
+    state => state.pagination,
 );
 
 export const getSelectedItemId = createSelector(

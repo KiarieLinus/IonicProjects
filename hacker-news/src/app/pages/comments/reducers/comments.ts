@@ -26,4 +26,4 @@ export function reducer(
     }
 }
 
-export const getSelectedItemId = (state: State) => state?.selectedItemId;
+export const getSelectedItemId = (state: State) => state.selectedItemId;
