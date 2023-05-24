@@ -2,11 +2,11 @@ import { Action } from "@ngrx/store";
 import { CommentsActions, CommentsActionTypes } from "../actions/comments";
 
 export interface State {
-    selectedItemId: number | null;
+    selectedItemId: number;
 }
 
 const initialState: State = {
-    selectedItemId: null,
+    selectedItemId: -1,
 };
 
 export function reducer(
@@ -26,4 +26,4 @@ export function reducer(
     }
 }
 
-export const getSelectedItemId = (state: State) => state.selectedItemId;
+export const getSelectedItemId = (state: State) => state?.selectedItemId;

@@ -9,8 +9,8 @@
       <ion-icon name="time"></ion-icon>
       {{ item.time | timeAgo }}
     </span>
-    <ion-button *ngIf="item.kids" [fill]="'clear'" [routerLink]="['/comments', item.id]">
-      <ion-icon slot="icon-only" name="chatboxes"></ion-icon>
+    <ion-button *ngIf="item.kids" [fill]="'clear'" (click)="openComments(item.id)">
+      <ion-icon slot="icon-only" name="chatbubbles-outline"></ion-icon>
       {{ item.kids.length }}
     </ion-button>
   </div>

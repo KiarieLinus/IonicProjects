@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Item } from 'src/app/models/item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment',
@@ -8,4 +9,10 @@ import { Item } from 'src/app/models/item';
 })
 export class CommentComponent {
   @Input() item?: Item;
+
+  constructor(private router: Router) { }
+
+  openComments(id: number) {
+    this.router.navigateByUrl(`/comments/${id}`)
+  }
 }

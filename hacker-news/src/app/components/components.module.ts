@@ -21,6 +21,6 @@ import { CommentsComponent } from './comments/comments.component';
     CommonModule,
     IonicModule
   ],
-  exports: [ItemsComponent]
+  exports: [ItemsComponent, CommentsComponent]
 })
 export class ComponentsModule { }

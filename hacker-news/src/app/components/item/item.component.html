@@ -20,7 +20,7 @@
       {{item.url}}
     </span>
   </div>
-  <ion-button *ngIf="item.kids" [fill]="'clear'" [routerLink]="['/comments', item.id]">
+  <ion-button *ngIf="item.kids" [fill]="'clear'" (click)="openComments(item.id)">
     <ion-icon slot="icon-only" name="chatbubbles-outline"></ion-icon>
     {{ item.kids.length }}
   </ion-button>

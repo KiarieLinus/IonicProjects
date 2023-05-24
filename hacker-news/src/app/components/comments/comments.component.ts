@@ -7,5 +7,5 @@ import { Items } from 'src/app/models/items';
   styleUrls: ['./comments.component.scss'],
 })
 export class CommentsComponent {
-  @Input() items?: Items;
+  @Input() items?: Items | null;
 }
