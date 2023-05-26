@@ -18,6 +18,9 @@ import { CustomRouterStateSerializer, reducers } from './reducers';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 
+import { provideFirebaseApp, initializeApp, getApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { Project1AngularFireAuth } from './firebase.factory.ts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,8 +29,10 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
     IonicModule.forRoot(),
     AppRoutingModule,
     ServicesModule,
-    AngularFireModule.initializeApp(environment.app_db),
+    AngularFireModule.initializeApp(environment.hackernews_db),
     AngularFireDatabaseModule,
+    provideFirebaseApp(() => initializeApp(environment.app_db, 'auth')),
+    provideAuth(() => getAuth(getApp('auth'))),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ItemsEffects]),
     StoreRouterConnectingModule.forRoot({
@@ -44,7 +49,10 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
       provide: RouterStateSerializer, useClass:
         CustomRouterStateSerializer
     },
-
+    {
+      provide: 'project1Auth',
+      useFactory: Project1AngularFireAuth
+    },
   ],
   bootstrap: [AppComponent],
 })

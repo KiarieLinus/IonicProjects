@@ -1,8 +1,5 @@
-import { NgZone } from '@angular/core';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { AuthInstances } from "@angular/fire/auth";
 
-import { environment } from 'src/environments/environment';
-
-export function HackerNews() {
-    return provideFirebaseApp(() => initializeApp(environment.hackernews_db))
+export function Project1AngularFireAuth(authInstances: AuthInstances) {
+    return authInstances.find(a => a.name === 'auth')
 }

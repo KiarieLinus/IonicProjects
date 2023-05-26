@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'comments/:id',
     loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsPageModule)
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+  },
 ];
 
 @NgModule({
