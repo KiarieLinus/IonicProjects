@@ -4,7 +4,8 @@ import {
   Auth, User, user,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  updateProfile
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -21,7 +22,11 @@ export class AuthService {
 
   create(user: NewAccount): Promise<User> {
     return createUserWithEmailAndPassword(this.auth, user.email, user.password)
-      .then(result => result.user);
+      .then(result => updateProfile(result.user,
+        {
+          displayName: user.name,
+          photoURL: null,
+        }).then(() => result.user));
   }
 
   login(user: EmailPasswordPair): Promise<User> {

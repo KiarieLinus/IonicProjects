@@ -8,12 +8,19 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
+import { AuthEffects } from './effects/auth';
+import { reducers } from './reducers';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   declarations: [LoginComponent, SignupComponent]
 })
