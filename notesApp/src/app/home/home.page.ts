@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
@@ -6,8 +7,17 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule],
 })
 export class HomePage {
-  constructor() {}
+  items = Array(8)
+    .fill(0)
+    .map((_x, i) => ({
+      time: i + 1,
+      color: '#fffb07f3',
+    }));
+
+  constructor() {
+    console.log(this.items);
+  }
 }
