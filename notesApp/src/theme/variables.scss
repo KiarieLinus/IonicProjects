@@ -4,8 +4,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;1,6..12,400&display=swap");
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: "Nunito Sans", sans-serif;
+
   --ion-safe-area-top: 20px;
   --ion-safe-area-bottom: 20px;
+  --ion-background-color: #ffffff59;
+  --ion-background-color-rgb: 37, 37, 37;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
